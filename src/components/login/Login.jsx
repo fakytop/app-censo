@@ -5,7 +5,30 @@ const Login = () => {
     const password = useRef(null);
 
     const iniciarSesion = () => {
-        alert(username.current.value+ " " + password.current.value);
+        if(username.current.value != "" && password.current.value != "" ){
+            const data = {
+                "usuario": username.current.value,
+                "password": password.current.value
+            }
+
+            fetch('https://censo.develotion.com//login.php',{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(r => r.json())
+            .then(rjson => {
+                if(rjson.codigo === 200){
+                    localStorage.setItem("idUsuario", rjson.id);
+                    localStorage.setItem("apiKey", rjson.apiKey);
+                    console.log(localStorage.getItem("idUsuario"));                        
+                } else {
+                    
+                }
+            })
+        } 
     }
 
     return (

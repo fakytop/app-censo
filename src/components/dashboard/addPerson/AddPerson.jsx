@@ -14,7 +14,7 @@ const AddPerson = () => {
 
     const saveNewPerson = () => {
         const data = {
-            "idUsuario": 241, //Cambiar x localstorage 
+            "idUsuario": localStorage.getItem('idUsuario'),
             "nombre": nameSelected.current.value,
             "departamento": parseInt(dpto.current.value),
             "ciudad": parseInt(citySelected.current.value),
@@ -28,8 +28,8 @@ const AddPerson = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'apikey': 'c8310064ac1d8265c516de1a5fa36032',
-                'iduser': 241
+                'apikey': localStorage.getItem('apiKey'),
+                'iduser': localStorage.getItem('idUsuario')
             },
             body: JSON.stringify(data)            
         })
@@ -47,8 +47,8 @@ const AddPerson = () => {
         fetch("https://censo.develotion.com//departamentos.php", {
             headers: {
                 'Content-Type': 'application/json',
-                'apikey': 'c8310064ac1d8265c516de1a5fa36032',
-                'iduser': 241
+                'apikey': localStorage.getItem('apiKey'),
+                'iduser': localStorage.getItem('idUsuario')
             }
         }).then(r => r.json())
             .then(rjson => {
@@ -60,8 +60,8 @@ const AddPerson = () => {
         fetch('https://censo.develotion.com//ocupaciones.php',{
             headers: {
                 'Content-Type': 'application/json',
-                'apikey': 'c8310064ac1d8265c516de1a5fa36032',
-                'iduser': 241
+                'apikey': localStorage.getItem('apiKey'),
+                'iduser': localStorage.getItem('idUsuario')
         }})
         .then(r => r.json())
         .then(rjson => {
@@ -74,8 +74,8 @@ const AddPerson = () => {
         fetch(`https://censo.develotion.com//ciudades.php?idDepartamento=${dpto.current.value}`, {
             headers: {
                 'Content-Type': 'application/json',
-                'apikey': 'c8310064ac1d8265c516de1a5fa36032',
-                'iduser': 241
+                'apikey': localStorage.getItem('apiKey'),
+                'iduser': localStorage.getItem('idUsuario')
             }
         })
         .then(r => r.json())
