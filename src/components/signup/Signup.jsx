@@ -31,6 +31,9 @@ const Signup = () => {
                         showError(rjson.mensaje);
                     }
                 })
+        } else {
+            showError("Usuario y contraseña no pueden estar vacíos.");
+
         }
     }
 

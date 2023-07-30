@@ -1,11 +1,13 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Login = () => {
     const username = useRef(null);
     const password = useRef(null);
+    const [msg, setMsg] = useState("");
+    const [showMessageError, setShowMessageError] = useState(false);
 
     const iniciarSesion = () => {
-        if(username.current.value != "" && password.current.value != "" ){
+        if(username.current.value !== "" && password.current.value !== "" ){
             const data = {
                 "usuario": username.current.value,
                 "password": password.current.value
@@ -25,10 +27,22 @@ const Login = () => {
                     localStorage.setItem("apiKey", rjson.apiKey);
                     console.log(localStorage.getItem("idUsuario"));                        
                 } else {
-                    
+                    showError(rjson.mensaje);
                 }
             })
-        } 
+        } else {
+            showError("Usuario y contraseña no pueden estar vacíos.");
+
+        }
+    }
+
+    const showError = msjError =>{
+        setMsg(msjError);
+        setShowMessageError(true);
+        setTimeout(() => {
+            setShowMessageError(false);
+            console.log(msjError);
+        },3000)
     }
 
     return (
@@ -45,6 +59,9 @@ const Login = () => {
             <div>
                 <button type="button" className="btn btn-success form-control" onClick={iniciarSesion}>Iniciar Sesión</button>
             </div>
+            {showMessageError && (
+            <div class="alert alert-warning" role="alert">{msg}</div>
+            )}
         </>
     )
 }
