@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveDptos } from "../../features/deptosSlice";
 import endpoints from "../../services/config";
+import { saveOccupations } from "../../features/occupationsSlice";
 
 const Login = () => {
     const username = useRef(null);
@@ -17,7 +18,7 @@ const Login = () => {
                 "password": password.current.value
             }
 
-            fetch(endpoints.base_url+endpoints.post_login, {
+            fetch(endpoints.base_url + endpoints.post_login, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -31,16 +32,30 @@ const Login = () => {
                         localStorage.setItem("apiKey", rjson.apiKey);
                         console.log(localStorage.getItem("idUsuario"));
 
-                        fetch(endpoints.base_url+endpoints.get_depts, {
+                        fetch(endpoints.base_url + endpoints.get_depts, {
                             headers: {
                                 'Content-Type': 'application/json',
                                 'apikey': localStorage.getItem('apiKey'),
                                 'iduser': localStorage.getItem('idUsuario')
                             }
-                        }).then(r => r.json())
+                        })
+                            .then(r => r.json())
                             .then(rjson => {
                                 dispatch(saveDptos(rjson.departamentos));
+                            });
+
+                        fetch(endpoints.base_url + endpoints.get_occupations, {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'apikey': localStorage.getItem('apiKey'),
+                                'iduser': localStorage.getItem('idUsuario')
+                            }
+                        })
+                            .then(r => r.json())
+                            .then(rjson => {
+                                dispatch(saveOccupations(rjson.ocupaciones));
                             })
+
                     } else {
                         showError(rjson.mensaje);
                     }

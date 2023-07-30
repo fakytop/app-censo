@@ -1,17 +1,20 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import endpoints from "../../../services/config";
+import Options from "./options/Options";
+
 
 const AddPerson = () => {
     const [cities, setCities] = useState([]);
-    const [occupations, setOccupations] = useState([]);
+    // const [occupations, setOccupations] = useState([]);
     const [idDpto, setIdDpto] = useState(null);
     const dpto = useRef(0);
     const nameSelected = useRef("");
     const citySelected = useRef(0);
     const dateSelected = useRef("");
     const occupationSelected = useRef(0);
-    const deptos = useSelector(state => state.deptos.deptos)
+    const deptos = useSelector(state => state.deptos.deptos);
+    const occupations = useSelector(state => state.occupations.occupations);
 
 
     const saveNewPerson = () => {
@@ -44,21 +47,7 @@ const AddPerson = () => {
 
     const dptoSelected = () => {
         setIdDpto(dpto.current.value);
-    }
-
-    useEffect(() => {
-        fetch('https://censo.develotion.com//ocupaciones.php',{
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': localStorage.getItem('apiKey'),
-                'iduser': localStorage.getItem('idUsuario')
-        }})
-        .then(r => r.json())
-        .then(rjson => {
-            setOccupations(rjson.ocupaciones);
-        })
-    }, [])
-    
+    }    
 
     useEffect(() => {
         fetch(`https://censo.develotion.com//ciudades.php?idDepartamento=${dpto.current.value}`, {
@@ -84,7 +73,7 @@ const AddPerson = () => {
             <select className="form-select form-select-lg mb-3" aria-label="Large select example" ref={dpto} onChange={dptoSelected} defaultValue={""}>
                 <option value="" disabled>Seleccione un Departamento</option>
                 {
-                    deptos.map(dpto => <option key={dpto.id} value={dpto.id}>{dpto.nombre}</option>)
+                    deptos.map(dpto => <Options value={dpto.id} name={dpto.nombre}/>)//<option key={dpto.id} value={dpto.id}>{dpto.nombre}</option>)
                 }
             </select>
 
