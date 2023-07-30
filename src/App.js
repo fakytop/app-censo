@@ -7,9 +7,9 @@ import Dashboard from './components/dashboard/Dashboard';
 function App() {
   return (
     <div className="App">
-      <Login/>
-      {/* <Signup/> */}
-      <Dashboard/>
+      {/* <Login/> */}
+      <Signup/>
+      {/* <Dashboard/> */}
 
 
 
