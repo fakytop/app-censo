@@ -5,9 +5,9 @@ import TotalRegistered from "./totalRegistered/TotalRegistered";
 const Dashboard = () => {
     return (
         <>
-            <AddPerson />
-            {/* <ListPeople />
-            <TotalRegistered/> */}
+            {/* <AddPerson /> */}
+            <ListPeople />
+            {/* <TotalRegistered/> */}
         </>
     )
 }

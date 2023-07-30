@@ -1,17 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    people : []
+    people: []
 }
 
 export const personsSlice = createSlice({
-    name:"person",
+    name: "persons",
     initialState,
-    reducers:{
-
+    reducers: {
+        saveRegisteredById: (state, action) => {
+            state.people = action.payload;
+        }
     }
 })
 
-export const {} = personsSlice.actions;
+export const { saveRegisteredById } = personsSlice.actions;
 
 export default personsSlice.reducer;

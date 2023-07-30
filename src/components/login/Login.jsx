@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveDptos } from "../../features/deptosSlice";
 import endpoints from "../../services/config";
 import { saveOccupations } from "../../features/occupationsSlice";
+import { saveRegisteredById } from "../../features/personsSlice";
 
 const Login = () => {
     const username = useRef(null);
@@ -31,7 +32,7 @@ const Login = () => {
                         localStorage.setItem("idUsuario", rjson.id);
                         localStorage.setItem("apiKey", rjson.apiKey);
                         console.log(localStorage.getItem("idUsuario"));
-
+//Obtengo los departamentos y guardo en slice
                         fetch(endpoints.base_url + endpoints.get_depts, {
                             headers: {
                                 'Content-Type': 'application/json',
@@ -43,7 +44,7 @@ const Login = () => {
                             .then(rjson => {
                                 dispatch(saveDptos(rjson.departamentos));
                             });
-
+//Obtengo las ocupaciones y guardo en slice
                         fetch(endpoints.base_url + endpoints.get_occupations, {
                             headers: {
                                 'Content-Type': 'application/json',
@@ -55,7 +56,18 @@ const Login = () => {
                             .then(rjson => {
                                 dispatch(saveOccupations(rjson.ocupaciones));
                             })
-
+                        
+                        fetch(endpoints.base_url+endpoints.get_registered_id+localStorage.getItem('idUsuario'),{
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'apikey': localStorage.getItem('apiKey'),
+                                'iduser': localStorage.getItem('idUsuario')
+                            }
+                        })
+                            .then(r => r.json())
+                            .then(rjson =>{
+                                dispatch(saveRegisteredById(rjson.personas));
+                            })
                     } else {
                         showError(rjson.mensaje);
                     }

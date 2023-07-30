@@ -6,7 +6,6 @@ import Options from "./options/Options";
 
 const AddPerson = () => {
     const [cities, setCities] = useState([]);
-    // const [occupations, setOccupations] = useState([]);
     const [idDpto, setIdDpto] = useState(null);
     const dpto = useRef(0);
     const nameSelected = useRef("");
@@ -80,7 +79,7 @@ const AddPerson = () => {
             <select className="form-select form-select-sm" aria-label="Small select example" defaultValue={""} ref={citySelected}>
                 <option value="" disabled>Seleccione una ciudad</option>
                 {
-                    cities.map(city => <option key={city.id} value={city.id}>{city.nombre}</option>)
+                    cities.map(city => <Options value={city.id} name={city.nombre}/>)
                 }
             </select>
             <div className="form-floating">
@@ -90,7 +89,7 @@ const AddPerson = () => {
             <select className="form-select form-select-sm" aria-label="Small select example" defaultValue={""} ref={occupationSelected}>
                 <option value="" disabled>Seleccione una ocupación</option>
                 {
-                    occupations.map(occ => <option key={occ.id} value={occ.id}>{occ.ocupacion}</option>)
+                    occupations.map(occ => <Options value={occ.id} name={occ.ocupacion}/>)
                 }
             </select>
             <button type="button" className="btn btn-success form-control" onClick={saveNewPerson}>Guardar</button>

@@ -9,7 +9,7 @@ export const occupationsSlice = createSlice({
     initialState,
     reducers: {
         saveOccupations: (state, action) => {
-            state.deptos = action.payload;
+            state.occupations = action.payload;
         }
     }
 })
