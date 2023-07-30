@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 
 const AddPerson = () => {
-    const [deptos, setDeptos] = useState([]);
     const [cities, setCities] = useState([]);
     const [occupations, setOccupations] = useState([]);
     const [idDpto, setIdDpto] = useState(null);
@@ -10,6 +10,7 @@ const AddPerson = () => {
     const citySelected = useRef(0);
     const dateSelected = useRef("");
     const occupationSelected = useRef(0);
+    const deptos = useSelector(state => state.deptos.deptos)
 
 
     const saveNewPerson = () => {
@@ -42,19 +43,6 @@ const AddPerson = () => {
     const dptoSelected = () => {
         setIdDpto(dpto.current.value);
     }
-
-    useEffect(() => {
-        fetch("https://censo.develotion.com//departamentos.php", {
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': localStorage.getItem('apiKey'),
-                'iduser': localStorage.getItem('idUsuario')
-            }
-        }).then(r => r.json())
-            .then(rjson => {
-                setDeptos(rjson.departamentos);
-            })
-    }, [])
 
     useEffect(() => {
         fetch('https://censo.develotion.com//ocupaciones.php',{

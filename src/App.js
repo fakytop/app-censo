@@ -11,8 +11,8 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <Login />
-        <Signup />
-        {/* <Dashboard/> */}
+        {/* <Signup /> */}
+        <Dashboard/>
       </Provider>
 
     </div>

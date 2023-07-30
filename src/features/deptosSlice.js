@@ -1,17 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    people : []
+    deptos: []
 }
 
 export const deptosSlice = createSlice({
-    name:"deptos",
+    name: "deptos",
     initialState,
-    reducers:{
-
+    reducers: {
+        saveDptos: (state, action) => {
+            state.deptos = action.payload;
+        }
     }
 })
 
-export const {} = deptosSlice.actions;
+export const { saveDptos } = deptosSlice.actions;
 
 export default deptosSlice.reducer;
