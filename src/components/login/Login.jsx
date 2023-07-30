@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveDptos } from "../../features/deptosSlice";
+import endpoints from "../../services/config";
 
 const Login = () => {
     const username = useRef(null);
@@ -16,7 +17,7 @@ const Login = () => {
                 "password": password.current.value
             }
 
-            fetch('https://censo.develotion.com//login.php', {
+            fetch(endpoints.base_url+endpoints.post_login, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -29,7 +30,8 @@ const Login = () => {
                         localStorage.setItem("idUsuario", rjson.id);
                         localStorage.setItem("apiKey", rjson.apiKey);
                         console.log(localStorage.getItem("idUsuario"));
-                        fetch("https://censo.develotion.com//departamentos.php", {
+
+                        fetch(endpoints.base_url+endpoints.get_depts, {
                             headers: {
                                 'Content-Type': 'application/json',
                                 'apikey': localStorage.getItem('apiKey'),

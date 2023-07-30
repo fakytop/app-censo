@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
+import endpoints from "../../../services/config";
 
 const AddPerson = () => {
     const [cities, setCities] = useState([]);
@@ -25,7 +26,7 @@ const AddPerson = () => {
 
 
 
-        fetch('https://censo.develotion.com//personas.php',{
+        fetch(endpoints.base_url+endpoints.post_person,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,6 +38,7 @@ const AddPerson = () => {
         .then(r => r.json())
         .then(rjson => {
             console.log(rjson);
+            //TODO: en caso de exito agregar al listado de personas censadas. de lo contrario dar error.
         })
     }
 
