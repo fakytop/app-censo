@@ -56,7 +56,7 @@ const Login = () => {
                             .then(rjson => {
                                 dispatch(saveOccupations(rjson.ocupaciones));
                             })
-                        
+//Obtengo las los usuarios y guardo en slice                     
                         fetch(endpoints.base_url+endpoints.get_registered_id+localStorage.getItem('idUsuario'),{
                             headers: {
                                 'Content-Type': 'application/json',

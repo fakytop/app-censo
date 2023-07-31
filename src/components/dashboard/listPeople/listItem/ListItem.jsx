@@ -4,9 +4,6 @@ import { useSelector } from 'react-redux';
 const ListItem = (payload) => {
     const deptos = useSelector(state => state.deptos.deptos);
     const occupations = useSelector(state => state.occupations.occupations);
-
-    console.log(payload);
-    console.log(deptos);
     return (
         <tr>
             <th scope="row">{payload.payload.nombre}</th>
