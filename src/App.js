@@ -5,14 +5,18 @@ import Signup from './components/signup/Signup';
 import Dashboard from './components/dashboard/Dashboard';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ErrorNotFound from './components/errorNotFound/ErrorNotFound';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import ErrorNotFound from './components/errorNotFound/ErrorNotFound';
 
 function App() {
   return (
     <div className="App">
       <Provider store={store}>
-        <BrowserRouter>
+
+      <Login />
+      <Dashboard />
+      <Signup />
+        {/* <BrowserRouter>
           <Routes>
             <Route path="/" element={<Login />}/>
             <Route path="/signup" element={<Signup />}/>
@@ -23,7 +27,7 @@ function App() {
             
 
           </Routes>
-        </BrowserRouter>
+        </BrowserRouter> */}
       </Provider>
 
     </div>

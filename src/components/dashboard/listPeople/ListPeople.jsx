@@ -1,23 +1,18 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ListItem from "./listItem/ListItem";
 import Options from "../addPerson/options/Options";
-import { useRef, useEffect, useState } from "react";
-import { filteredByOccupation } from "../../../features/personsSlice";
+import { useRef, useState } from "react";
 
 const ListPeople = () => {
 
     const people = useSelector(state => state.persons.people);
     const occupations = useSelector(state => state.occupations.occupations);
-    const [idOccupation, setIdOccupation] = useState("");    
+    const [idOccupation, setIdOccupation] = useState(-1);    
     const idOccupationRef = useRef("")
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-        // console.log(idOccupation);
-        dispatch(filteredByOccupation(idOccupation));
-    }, [idOccupation])
-    
+
     const filterOccupation = () => {
+        console.log(people);
         setIdOccupation(idOccupationRef.current.value)
     }
 
@@ -25,7 +20,7 @@ const ListPeople = () => {
         <div>
             <h2>Personas censadas</h2>
             <select className="form-select form-select-sm" aria-label="Small select example" defaultValue={""} ref={idOccupationRef} onChange={filterOccupation}>
-                <option value=""># | Todos</option>
+                <option value={-1}># | Todos</option>
                 {
                     occupations.map(occ => <Options value={occ.id} name={occ.ocupacion}/>)
                 }
@@ -44,7 +39,7 @@ const ListPeople = () => {
                     </thead>
                     <tbody className="table-group-divider">
                         {
-                            people.map(p => <ListItem payload={p} />)
+                            idOccupation == -1 ? people.map(p => <ListItem payload={p} />) : people.filter(p=>p.ocupacion == idOccupation).map(p => <ListItem payload={p} />)
                         }
                     </tbody>
                 </table>

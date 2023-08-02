@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import DeleteItem from './deleteItem/DeleteItem';
 
 const ListItem = (payload) => {
     const deptos = useSelector(state => state.deptos.deptos);
@@ -10,7 +11,7 @@ const ListItem = (payload) => {
             <td>{payload.payload.fechaNacimiento}</td>
             <td>{deptos.find(dpto => dpto.id === payload.payload.departamento).nombre}</td>
             <td>{occupations.find(occ => occ.id === payload.payload.ocupacion).ocupacion}</td>
-            <td><button type="button" className="btn btn-outline-danger">Eliminar</button></td>
+            <td><DeleteItem idCenso={payload.payload.id}/></td>
         </tr>
     )
 }
