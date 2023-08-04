@@ -1,12 +1,16 @@
 import { useRef, useState } from "react"
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
     const [msg, setMsg] = useState("");
     const [showMessageError, setShowMessageError] = useState(false);
     const username = useRef("");
     const password = useRef("");
+    const navigate = useNavigate();
 
-
+    const navigateLogin = () => {
+        navigate('/login');
+    }
 
     const registrarse = () => {
         if (username.current.value !== "" && password.current.value !== "") {
@@ -27,6 +31,7 @@ const Signup = () => {
                     if (rjson.codigo === 200) {
                         localStorage.setItem("idUsuario", rjson.id);
                         localStorage.setItem("apiKey", rjson.apiKey);
+                        navigate('/dashboard');
                     } else {
                         showError(rjson.mensaje);
                     }
@@ -45,7 +50,8 @@ const Signup = () => {
             console.log(msjError);
         },3000)
     }
-
+    //TODO: Navegar al dashboard
+    //TODO: Evento del boton para que se habilite y deshabilite igual que login.
     return (
         <>
             <h1>Registrarse</h1>
@@ -59,6 +65,9 @@ const Signup = () => {
             </div>
             <div>
                 <button type="button" className="btn btn-success form-control" onClick={registrarse}>Registrarse</button>
+            </div>
+            <div>
+                <p>Ya tienes cuenta? <button type="button" className="btn btn-link" onClick={navigateLogin}>Ingresa aquí.</button></p>
             </div>
             {showMessageError && (
             <div class="alert alert-warning" role="alert">{msg}</div>

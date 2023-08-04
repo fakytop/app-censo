@@ -67,7 +67,9 @@ const AddPerson = () => {
                 setCities(rjson.ciudades);
             })
     }, [idDpto])
-
+    //TODO: Controlar datos al ingresar persona. Ver posibilidad de deshabilitar botón hasta que lo envíe.
+    //TODO: Componente para mostrar el total de personas censadas por el usuario.
+        //TODO: debo mostrar x por Mvdeo y x por el resto del país.
     return (
         <>
             <h1>Censar Nueva Persona</h1>

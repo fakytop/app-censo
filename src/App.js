@@ -5,29 +5,24 @@ import Signup from './components/signup/Signup';
 import Dashboard from './components/dashboard/Dashboard';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import ErrorNotFound from './components/errorNotFound/ErrorNotFound';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ErrorNotFound from './components/errorNotFound/ErrorNotFound';
 
+//TODO: Hacer LOGOUT.
+//TODO: Terminar navegabilidad.
 function App() {
   return (
     <div className="App">
       <Provider store={store}>
 
-      <Login />
-      <Dashboard />
-      <Signup />
-        {/* <BrowserRouter>
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Login />}/>
             <Route path="/signup" element={<Signup />}/>
             <Route path="/dashboard" element={<Dashboard />}/>
             <Route path="*" element={<ErrorNotFound/>}/>
-
-            
-            
-
           </Routes>
-        </BrowserRouter> */}
+        </BrowserRouter>
       </Provider>
 
     </div>
