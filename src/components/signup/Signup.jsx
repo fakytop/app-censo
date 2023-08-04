@@ -50,7 +50,6 @@ const Signup = () => {
             console.log(msjError);
         },3000)
     }
-    //TODO: Navegar al dashboard
     //TODO: Evento del boton para que se habilite y deshabilite igual que login.
     return (
         <>

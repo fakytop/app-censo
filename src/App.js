@@ -9,7 +9,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ErrorNotFound from './components/errorNotFound/ErrorNotFound';
 import Navbar from './components/navbar/Navbar';
 
-//TODO: Hacer LOGOUT.
 function App() {
   return (
     <div className="App">
