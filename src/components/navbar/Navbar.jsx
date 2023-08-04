@@ -1,6 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom"
 
 const Navbar = () => {
+
+    const Logout = () => {
+        localStorage.clear();
+    }
     return (
         <div className="container">
 
@@ -15,7 +19,7 @@ const Navbar = () => {
 
                     </div>
                     <div className="col-1">
-                        <NavLink to="/">Cerrar Sesión</NavLink>
+                        <NavLink to="/" onClick={Logout}>Cerrar Sesión</NavLink>
 
                     </div>
 
