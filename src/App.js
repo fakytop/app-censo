@@ -7,9 +7,9 @@ import { Provider } from 'react-redux';
 import { store } from './store/store';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ErrorNotFound from './components/errorNotFound/ErrorNotFound';
+import Navbar from './components/navbar/Navbar';
 
 //TODO: Hacer LOGOUT.
-//TODO: Terminar navegabilidad.
 function App() {
   return (
     <div className="App">
@@ -17,10 +17,12 @@ function App() {
 
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Login />}/>
-            <Route path="/signup" element={<Signup />}/>
-            <Route path="/dashboard" element={<Dashboard />}/>
-            <Route path="*" element={<ErrorNotFound/>}/>
+            <Route path="/" element={<Navbar/>}>
+              <Route path="/" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="*" element={<ErrorNotFound />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </Provider>
