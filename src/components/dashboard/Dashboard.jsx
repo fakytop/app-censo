@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { saveRegisteredById } from "../../features/personsSlice";
 import { saveOccupations } from "../../features/occupationsSlice";
 import { saveDptos } from "../../features/deptosSlice";
+import Analysis from "./analysis/Analysis";
 
 
 
@@ -69,6 +70,7 @@ const Dashboard = () => {
             <AddPerson />
             <ListPeople />
             <TotalRegistered/>
+            <Analysis/>
         </>
     )
 }
