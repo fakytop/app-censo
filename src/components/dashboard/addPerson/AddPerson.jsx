@@ -16,8 +16,18 @@ const AddPerson = () => {
     const deptos = useSelector(state => state.deptos.deptos);
     const occupations = useSelector(state => state.occupations.occupations);
     const dispatch = useDispatch();
+    const [msg, setMsg] = useState("");
+    const [showMessageError, setShowMessageError] = useState(false);
 
 
+    const showError = msjError => {
+        setMsg(msjError);
+        setShowMessageError(true);
+        setTimeout(() => {
+            setShowMessageError(false);
+        }, 3000)
+    }
+    
     const saveNewPerson = () => {
         const data = {
             "idUsuario": localStorage.getItem('idUsuario'),
@@ -27,8 +37,10 @@ const AddPerson = () => {
             "fechaNacimiento": dateSelected.current.value,
             "ocupacion": parseInt(occupationSelected.current.value)
         }
+        console.log(data);
+        
 
-        if(data.nombre !== "" && data.departamento !== "" && data.ciudad !== "" && data.fechaNacimiento !== "" && data.ocupacion !== "") {
+        if(data.nombre !== "" && !isNaN(data.departamento) && !isNaN(data.ciudad) && data.fechaNacimiento !== "" && !isNaN(data.ocupacion)) {
             fetch(endpoints.base_url + endpoints.post_person, {
                 method: 'POST',
                 headers: {
@@ -43,9 +55,12 @@ const AddPerson = () => {
                     if (rjson.codigo === 200) {
                         data.id = rjson.idCenso;
                         dispatch(addNewPerson(data))
+                    } else {
+                        showError(rjson.mensaje);
                     }
                 })
-    
+        } else {
+            showError("Debe completar todos los campos del formulario para poder ingresar un nuevo censo.");
         }
 
     }
@@ -67,9 +82,7 @@ const AddPerson = () => {
                 setCities(rjson.ciudades);
             })
     }, [idDpto])
-    //TODO: Controlar datos al ingresar persona. Ver posibilidad de deshabilitar botón hasta que lo envíe.
-    //TODO: Componente para mostrar el total de personas censadas por el usuario.
-        //TODO: debo mostrar x por Mvdeo y x por el resto del país.
+
     return (
         <>
             <h1>Censar Nueva Persona</h1>
@@ -101,6 +114,9 @@ const AddPerson = () => {
                 }
             </select>
             <button type="button" className="btn btn-success form-control" onClick={saveNewPerson}>Guardar</button>
+            {showMessageError && (
+                <div class="alert alert-warning" role="alert">{msg}</div>
+            )}
 
         </>
     )

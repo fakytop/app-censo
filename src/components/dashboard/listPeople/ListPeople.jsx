@@ -12,7 +12,6 @@ const ListPeople = () => {
 
 
     const filterOccupation = () => {
-        console.log(people);
         setIdOccupation(idOccupationRef.current.value)
     }
 

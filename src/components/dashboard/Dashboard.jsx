@@ -68,7 +68,7 @@ const Dashboard = () => {
         <>
             <AddPerson />
             <ListPeople />
-            {/* <TotalRegistered/> */}
+            <TotalRegistered/>
         </>
     )
 }
