@@ -20,7 +20,7 @@ ChartJS.register(
     Legend
 );
 
-const GraphicsBar = ({options,data,color}) => {
+const GraphicsBar = ({options,data,color,label}) => {
 
     return (
 
@@ -30,7 +30,7 @@ const GraphicsBar = ({options,data,color}) => {
                 labels: data.map(dpto => dpto.nombreGraph),
                 datasets: [
                     {
-                        label: 'Cantidad de personas censadas',
+                        label: label,
                         data: data.map(dpto => dpto.qant),
                         backgroundColor: color,
                     }
