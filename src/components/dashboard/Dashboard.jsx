@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { saveRegisteredById } from "../../features/personsSlice";
 import { saveOccupations } from "../../features/occupationsSlice";
 import { saveDptos } from "../../features/deptosSlice";
+import { saveAllRegistered } from "../../features/allRegistered";
 import Analysis from "./analysis/Analysis";
 
 
@@ -60,6 +61,17 @@ const Dashboard = () => {
             .then(rjson => {
                 dispatch(saveRegisteredById(rjson.personas));
             })
+
+        await fetch(endpoints.base_url + endpoints.get_all_registered, {
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': localStorage.getItem('apiKey'),
+                'iduser': localStorage.getItem('idUsuario')
+            }
+        }).then(r => r.json())
+        .then(rjson => {
+            dispatch(saveAllRegistered(rjson.total));
+        })
     }
 
     fetchData();

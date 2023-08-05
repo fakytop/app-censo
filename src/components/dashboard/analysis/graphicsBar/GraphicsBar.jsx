@@ -24,8 +24,7 @@ const GraphicsBar = ({options,data,color,label}) => {
 
     return (
 
-        <>
-            <div>Analysis</div>
+
             <Bar options={options} data={{
                 labels: data.map(dpto => dpto.nombreGraph),
                 datasets: [
@@ -37,7 +36,7 @@ const GraphicsBar = ({options,data,color,label}) => {
                 ],
             }} />
 
-        </>
+
     )
 }
 

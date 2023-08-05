@@ -3,6 +3,7 @@ import React from 'react'
 import GraphicsBar from './graphicsBar/GraphicsBar'
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import Map from './map/Map';
 const Analysis = () => {
     const people = useSelector(state => state.persons.people);
     const deptos = useSelector(state => state.deptos.deptos);
@@ -18,7 +19,9 @@ const Analysis = () => {
             return {
                 idGraph: dpto.id,
                 nombreGraph: dpto.nombre,
-                qant: qantPerDepto
+                qant: qantPerDepto,
+                latitud: dpto.latitud,
+                longitud: dpto.longitud
             }
         }).filter(item => item.qant !== 0);
         setDataPersonsPerDpto(newData)
@@ -36,7 +39,7 @@ const Analysis = () => {
         })
         console.log(newData);
         setDataPersonsByOccupations(newData);
-    },[people,occupations])
+    }, [people, occupations])
 
     const optionsPersonsPerDpto = {
         responsive: true,
@@ -62,14 +65,23 @@ const Analysis = () => {
             },
         },
     };
-  return (
-    <div>
+    return (
+        <div className='containter'>
+            <div className='row'>
+                <div className='col-4'>
+                    <GraphicsBar options={optionsPersonsPerDpto} data={dataPersonsPerDpto} color={'rgba(12, 200, 99, 0.5)'} label={'Cantidad de personas censadas por departamento'} />
+                    <GraphicsBar options={optionsPersonsByOccupation} data={dataPersonsByOccupations} color={'rgba(200, 200, 99, 0.5)'} label={'Cantidad de personas censadas por ocupación'} />
 
-        <GraphicsBar options={optionsPersonsPerDpto} data={dataPersonsPerDpto} color={'rgba(12, 200, 99, 0.5)'} label={'Cantidad de personas censadas por departamento'}/>
-        <GraphicsBar options={optionsPersonsByOccupation} data={dataPersonsByOccupations} color={'rgba(200, 200, 99, 0.5)'} label={'Cantidad de personas censadas por ocupación'}/>
+                </div>
+                <div className='col-8'>
+                    <Map data={dataPersonsPerDpto} />
 
-    </div>
-  )
+                </div>
+
+            </div>
+
+        </div>
+    )
 }
 
 export default Analysis
