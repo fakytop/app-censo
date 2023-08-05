@@ -11,16 +11,19 @@ export const personsSlice = createSlice({
         saveRegisteredById: (state, action) => {
             state.people = action.payload;
         },
-        addNewPerson:(state, action) => {
+        addNewPerson: (state, action) => {
             state.people.push(action.payload);
         },
-        deletePerson:(state, action) => {
+        deletePerson: (state, action) => {
             const idCenso = action.payload.idCenso;
             state.people = state.people.filter(p => p.id != idCenso);
+        },
+        clearPeople: (state) => {
+            state.people = [];
         }
     }
 })
 
-export const { saveRegisteredById, addNewPerson, deletePerson } = personsSlice.actions;
+export const { saveRegisteredById, addNewPerson, deletePerson, clearPeople } = personsSlice.actions;
 
 export default personsSlice.reducer;

@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { NavLink, Outlet, useLocation } from "react-router-dom"
+import { clearPeople } from "../../features/personsSlice";
+import { clearAllRegistered } from "../../features/allRegistered";
 
 const Navbar = () => {
+    const dispatch = useDispatch();
     const Logout = () => {
         localStorage.clear();
+        dispatch(clearPeople());
+        dispatch(clearAllRegistered());
     }
 
     const [enableButton, setEnableButton] = useState("none");

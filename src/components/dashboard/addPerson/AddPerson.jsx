@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import endpoints from "../../../services/config";
 import Options from "./options/Options";
 import { addNewPerson } from "../../../features/personsSlice";
+import { addNewRegistered } from "../../../features/allRegistered";
 
 
 const AddPerson = () => {
@@ -27,7 +28,7 @@ const AddPerson = () => {
             setShowMessageError(false);
         }, 3000)
     }
-    
+
     const saveNewPerson = () => {
         const data = {
             "idUsuario": localStorage.getItem('idUsuario'),
@@ -38,9 +39,9 @@ const AddPerson = () => {
             "ocupacion": parseInt(occupationSelected.current.value)
         }
         console.log(data);
-        
 
-        if(data.nombre !== "" && !isNaN(data.departamento) && !isNaN(data.ciudad) && data.fechaNacimiento !== "" && !isNaN(data.ocupacion)) {
+
+        if (data.nombre !== "" && !isNaN(data.departamento) && !isNaN(data.ciudad) && data.fechaNacimiento !== "" && !isNaN(data.ocupacion)) {
             fetch(endpoints.base_url + endpoints.post_person, {
                 method: 'POST',
                 headers: {
@@ -54,7 +55,8 @@ const AddPerson = () => {
                 .then(rjson => {
                     if (rjson.codigo === 200) {
                         data.id = rjson.idCenso;
-                        dispatch(addNewPerson(data))
+                        dispatch(addNewPerson(data));
+                        dispatch(addNewRegistered());
                     } else {
                         showError(rjson.mensaje);
                     }
@@ -84,8 +86,8 @@ const AddPerson = () => {
     }, [idDpto])
 
     return (
-        <>
-            <h1>Censar Nueva Persona</h1>
+        <form className="card">
+            <h1>Nuevo Censo</h1>
             <div className="form-floating mb-3">
                 <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" ref={nameSelected} />
                 <label htmlFor="floatingInput">Nombre</label>
@@ -118,7 +120,7 @@ const AddPerson = () => {
                 <div class="alert alert-warning" role="alert">{msg}</div>
             )}
 
-        </>
+        </form>
     )
 }
 

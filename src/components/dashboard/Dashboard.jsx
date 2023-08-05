@@ -8,15 +8,14 @@ import { saveOccupations } from "../../features/occupationsSlice";
 import { saveDptos } from "../../features/deptosSlice";
 import { saveAllRegistered } from "../../features/allRegistered";
 import Analysis from "./analysis/Analysis";
-
-
+import RegisteredPercentage from "./analysis/registeredPercentage/RegisteredPercentage";
 
 //TODO: Componente Análisis con todas las gráficas
-    //TODO: Gráfico de personas x depto. (no se muestran deptos sin datos.)
-    //TODO: Gráfico de personas x ocupación.
-    //TODO: Mapa con censados x dpto.
-    //TODO: % de personas censadas respecto del total.
-    //TODO: Tiempo restante en días para finalizar el censo (31/08/2023)
+//TODO: Gráfico de personas x depto. (no se muestran deptos sin datos.)
+//TODO: Gráfico de personas x ocupación.
+//TODO: Mapa con censados x dpto.
+//TODO: % de personas censadas respecto del total.
+//TODO: Tiempo restante en días para finalizar el censo (31/08/2023)
 
 
 const Dashboard = () => {
@@ -69,21 +68,31 @@ const Dashboard = () => {
                 'iduser': localStorage.getItem('idUsuario')
             }
         }).then(r => r.json())
-        .then(rjson => {
-            dispatch(saveAllRegistered(rjson.total));
-        })
+            .then(rjson => {
+                dispatch(saveAllRegistered(rjson.total));
+            })
     }
 
     fetchData();
 
 
     return (
-        <>
-            <AddPerson />
-            <ListPeople />
-            <TotalRegistered/>
-            <Analysis/>
-        </>
+        <div className="container">
+            <div className="row">
+
+                <div className="col-4">
+                    <AddPerson />
+                </div>
+                <div className="col-6">
+                    <ListPeople />
+                </div>
+                <div className="col-2">
+                    <TotalRegistered />
+                    <RegisteredPercentage />
+                </div>
+                <Analysis />
+            </div>
+        </div>
     )
 }
 

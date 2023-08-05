@@ -4,6 +4,8 @@ import GraphicsBar from './graphicsBar/GraphicsBar'
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Map from './map/Map';
+import RegisteredPercentage from './registeredPercentage/RegisteredPercentage';
+import TimeLeft from './timeLeft/TimeLeft';
 const Analysis = () => {
     const people = useSelector(state => state.persons.people);
     const deptos = useSelector(state => state.deptos.deptos);
@@ -66,14 +68,18 @@ const Analysis = () => {
         },
     };
     return (
-        <div className='containter'>
-            <div className='row'>
+        <div>
+            <TimeLeft />
+            <div className="row">
                 <div className='col-4'>
                     <GraphicsBar options={optionsPersonsPerDpto} data={dataPersonsPerDpto} color={'rgba(12, 200, 99, 0.5)'} label={'Cantidad de personas censadas por departamento'} />
+
+                </div>
+                <div className='col-5'>
                     <GraphicsBar options={optionsPersonsByOccupation} data={dataPersonsByOccupations} color={'rgba(200, 200, 99, 0.5)'} label={'Cantidad de personas censadas por ocupación'} />
 
                 </div>
-                <div className='col-8'>
+                <div className='col-3'>
                     <Map data={dataPersonsPerDpto} />
 
                 </div>

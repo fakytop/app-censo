@@ -17,9 +17,8 @@ const ListPeople = () => {
 
     return (
         <div>
-            <h2>Personas censadas</h2>
             <select className="form-select form-select-sm" aria-label="Small select example" defaultValue={""} ref={idOccupationRef} onChange={filterOccupation}>
-                <option value={-1}># | Todos</option>
+                <option value={-1}>Todos</option>
                 {
                     occupations.map(occ => <Options value={occ.id} name={occ.ocupacion}/>)
                 }

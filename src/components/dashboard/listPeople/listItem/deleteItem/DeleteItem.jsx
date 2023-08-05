@@ -2,6 +2,7 @@ import React from 'react'
 import endpoints from '../../../../../services/config';
 import { useDispatch } from 'react-redux';
 import { deletePerson } from '../../../../../features/personsSlice';
+import { deleteRegistered } from '../../../../../features/allRegistered';
 
 const DeleteItem = (idCenso) => {
     const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const DeleteItem = (idCenso) => {
             .then(rjson => {
                 if (rjson.codigo === 200) {
                     dispatch(deletePerson(idCenso));
-
+                    dispatch(deleteRegistered());
                 }
             })
 
