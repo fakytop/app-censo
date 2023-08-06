@@ -2,7 +2,7 @@ import React from 'react'
 
 const Options = ({value,name}) => {
     return (
-        <option key={value} value={value}>{name}</option>
+        <option value={value}>{name}</option>
     )
 }
 

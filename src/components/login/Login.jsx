@@ -28,7 +28,7 @@ const Login = () => {
         if (localStorage.getItem("apiKey") !== null && localStorage.getItem("idUsuario") !== null) {
             navigate('/dashboard');
         }
-    }, [])
+    },[navigate])
 
     const navigateSignup = () => {
         navigate('/signup');

@@ -4,7 +4,6 @@ import GraphicsBar from './graphicsBar/GraphicsBar'
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Map from './map/Map';
-import RegisteredPercentage from './registeredPercentage/RegisteredPercentage';
 import TimeLeft from './timeLeft/TimeLeft';
 const Analysis = () => {
     const people = useSelector(state => state.persons.people);
@@ -72,7 +71,7 @@ const Analysis = () => {
                 <TimeLeft/>
                 <div className="col-6 ">
                     <div className="card border-danger">
-                        <div class="card-header">Cant. Personas por Departamento</div>
+                        <div className="card-header">Cant. Personas por Departamento</div>
                         <div className="card-body">
                             <GraphicsBar options={optionsPersonsPerDpto} data={dataPersonsPerDpto} color={'rgba(240, 91, 121, 0.8)'} label={'Cantidad de personas censadas por departamento'} />
                         </div>
@@ -81,7 +80,7 @@ const Analysis = () => {
 
                 <div className="col-6">
                     <div className="card border-warning">
-                        <div class="card-header">Cant. Personas por Ocupación</div>
+                        <div className="card-header">Cant. Personas por Ocupación</div>
                         <div className="card-body">
                             <GraphicsBar options={optionsPersonsByOccupation} data={dataPersonsByOccupations} color={'rgba(243, 203, 58, 0.8)'} label={'Cantidad de personas censadas por ocupación'} />
                         </div>

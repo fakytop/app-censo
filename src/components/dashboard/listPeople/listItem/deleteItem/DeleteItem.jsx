@@ -28,16 +28,10 @@ const DeleteItem = (idCenso) => {
     }
 
     return (
-        <>
-            {/* <button type="button" className="btn btn-outline-danger" onClick={deletePersonById}>Eliminar</button> */}
-                <div className="awesomeIcon" onClick={deletePersonById} >
-                <FontAwesomeIcon  icon={faUserMinus} size="lg"/>
+        <div className="awesomeIcon" onClick={deletePersonById} >
+            <FontAwesomeIcon icon={faUserMinus} size="lg" />
+        </div>
 
-                </div>
-
-
-
-        </>
     )
 }
 

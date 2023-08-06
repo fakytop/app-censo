@@ -16,7 +16,7 @@ export const personsSlice = createSlice({
         },
         deletePerson: (state, action) => {
             const idCenso = action.payload.idCenso;
-            state.people = state.people.filter(p => p.id != idCenso);
+            state.people = state.people.filter(p => p.id !== idCenso);
         },
         clearPeople: (state) => {
             state.people = [];
