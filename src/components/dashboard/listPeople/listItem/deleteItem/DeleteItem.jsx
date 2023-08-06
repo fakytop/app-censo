@@ -3,6 +3,8 @@ import endpoints from '../../../../../services/config';
 import { useDispatch } from 'react-redux';
 import { deletePerson } from '../../../../../features/personsSlice';
 import { deleteRegistered } from '../../../../../features/allRegistered';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserMinus } from '@fortawesome/free-solid-svg-icons';
 
 const DeleteItem = (idCenso) => {
     const dispatch = useDispatch();
@@ -26,7 +28,16 @@ const DeleteItem = (idCenso) => {
     }
 
     return (
-        <button type="button" className="btn btn-outline-danger" onClick={deletePersonById}>Eliminar</button>
+        <>
+            {/* <button type="button" className="btn btn-outline-danger" onClick={deletePersonById}>Eliminar</button> */}
+                <div className="awesomeIcon" onClick={deletePersonById} >
+                <FontAwesomeIcon  icon={faUserMinus} size="lg"/>
+
+                </div>
+
+
+
+        </>
     )
 }
 

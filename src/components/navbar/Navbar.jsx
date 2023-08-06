@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { NavLink, Outlet, useLocation } from "react-router-dom"
 import { clearPeople } from "../../features/personsSlice";
 import { clearAllRegistered } from "../../features/allRegistered";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
     const dispatch = useDispatch();
@@ -32,7 +34,7 @@ const Navbar = () => {
                 </div>
                 <div className="col-1" style={{ display: enableButton }}>
                     <NavLink to="/" onClick={Logout}>
-                        <img src="./img/logout.jpg" alt="" style={{ height: '56px' }} />
+                    <FontAwesomeIcon icon={faArrowRightFromBracket} size="2xl"/>
                     </NavLink>
                 </div>
             </nav>
