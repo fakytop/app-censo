@@ -16,7 +16,7 @@ const ListPeople = () => {
     }
 
     return (
-        <div className="col-md-6">
+        <div className="col-md-6 dropdown" data-bs-theme="light">
             <div className="card" style={{height: '430px'}}>
                 <div className="card-header">Listado de Personas</div>
                 <div className="card-body" style={{ overflowY: 'scroll' }}>
