@@ -92,7 +92,7 @@ const AddPerson = () => {
 
     return (
         <div className="col-md-4">
-            <div className="card" style={{height: '360px'}}>
+            <div className="card" style={{height: '430px'}}>
                 <div className="card-header">Agregar Persona</div>
                 <div className="card-body">
                     <form id="formularioPersona">

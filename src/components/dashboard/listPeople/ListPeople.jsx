@@ -17,7 +17,7 @@ const ListPeople = () => {
 
     return (
         <div className="col-md-6">
-            <div className="card" style={{height: '360px'}}>
+            <div className="card" style={{height: '430px'}}>
                 <div className="card-header">Listado de Personas</div>
                 <div className="card-body" style={{ overflowY: 'scroll' }}>
                     <div className="form-group">

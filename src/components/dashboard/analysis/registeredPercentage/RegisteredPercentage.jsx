@@ -12,11 +12,11 @@ const RegisteredPercentage = () => {
   }, [allRegistered, people])
 
   return (
-    <div className="card" style={{height:'180px'}}>
-      <div className="card-header">% Censados</div>
+    <div className="card" style={{height: '215px'}}>
+      <div className="card-header"><h3>% Censados</h3></div>
       <div className="card-body">
         <h1 className="card-title">{percentage}%</h1>
-        <p>Total registrados: {allRegistered}</p>
+        <h6>Total registrados: {allRegistered}</h6>
       </div>
     </div>
   )
