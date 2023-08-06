@@ -69,11 +69,12 @@ const Analysis = () => {
     return (
         <div className="container">
             <div className="row">
+                <TimeLeft/>
                 <div className="col-6 ">
                     <div className="card border-danger">
                         <div class="card-header">Cant. Personas por Departamento</div>
                         <div className="card-body">
-                            <GraphicsBar options={optionsPersonsPerDpto} data={dataPersonsPerDpto} color={'rgba(240, 91, 121, 0.5)'} label={'Cantidad de personas censadas por departamento'} />
+                            <GraphicsBar options={optionsPersonsPerDpto} data={dataPersonsPerDpto} color={'rgba(240, 91, 121, 0.8)'} label={'Cantidad de personas censadas por departamento'} />
                         </div>
                     </div>
                 </div>
@@ -82,7 +83,7 @@ const Analysis = () => {
                     <div className="card border-warning">
                         <div class="card-header">Cant. Personas por Ocupación</div>
                         <div className="card-body">
-                            <GraphicsBar options={optionsPersonsByOccupation} data={dataPersonsByOccupations} color={'rgba(243, 203, 58, 0.5)'} label={'Cantidad de personas censadas por ocupación'} />
+                            <GraphicsBar options={optionsPersonsByOccupation} data={dataPersonsByOccupations} color={'rgba(243, 203, 58, 0.8)'} label={'Cantidad de personas censadas por ocupación'} />
                         </div>
                     </div>
                 </div>

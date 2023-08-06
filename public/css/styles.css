@@ -1,11 +1,16 @@
-Estilos generales para dark mode 
- body, .card {
+/* Estilos generales para dark mode  */
+ body, .card{
     background-color: #343a40;
     color: #fff;
     margin: 1px;
 }
 
-Estilos para el modo oscuro del botón de guardar
+.parrafo {
+    color: #fff;
+    margin: 1px;
+}
+
+/* Estilos para el modo oscuro del botón de guardar */
  .btn-primary {
     background-color: #007bff;
     border-color: #007bff;
