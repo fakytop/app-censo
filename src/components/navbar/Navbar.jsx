@@ -21,7 +21,7 @@ const Navbar = () => {
     }, [location])
 
     return (
-        <div className="container mt-5">
+        <div className="container">
             <nav className="row">
                 <div className="col-1">
                     <NavLink to="/">

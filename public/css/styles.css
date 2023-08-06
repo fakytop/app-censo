@@ -1,30 +1,42 @@
-/* Estilos generales para dark mode */
-/* body, .card {
+Estilos generales para dark mode 
+ body, .card {
     background-color: #343a40;
     color: #fff;
-} */
+    margin: 1px;
+}
 
-/* Estilos para el modo oscuro del botón de guardar */
-/* .btn-primary {
+Estilos para el modo oscuro del botón de guardar
+ .btn-primary {
     background-color: #007bff;
     border-color: #007bff;
-} */
+}
 
-/* .btn-primary:hover {
+ .btn-primary:hover {
     background-color: #0056b3;
     border-color: #0056b3;
-} */
+}
 
-/* Estilos para el modo oscuro de las gráficas */
-/* .chart-container {
+ Estilos para el modo oscuro de las gráficas 
+ .chart-container {
     background-color: #454d55;
-} */
+}
 
-/* ... otros estilos para el modo oscuro ... */
-/* input.form-control,
+ /* ... otros estilos para el modo oscuro ...  */
+ input.form-control,
 select.form-control {
-    background-color: #f8f9fa; /* Cambiar por el color que desees */
-/* }
+    background-color: #454d55; /* Cambiar por el color que desees */
+ }
 
-   */
 
+nav {
+    background-color: #2e2f49;
+    padding: 1.2rem!important;
+}
+
+.header-map {
+    background-color: #6D6FB2;
+}
+
+.mod-padding {
+    padding: 0;
+}

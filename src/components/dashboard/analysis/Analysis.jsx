@@ -69,27 +69,27 @@ const Analysis = () => {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-6">
-                    <div className="card">
+                <div className="col-6 ">
+                    <div className="card border-danger">
                         <div class="card-header">Cant. Personas por Departamento</div>
                         <div className="card-body">
-                            <GraphicsBar options={optionsPersonsPerDpto} data={dataPersonsPerDpto} color={'rgba(12, 200, 99, 0.5)'} label={'Cantidad de personas censadas por departamento'} />
+                            <GraphicsBar options={optionsPersonsPerDpto} data={dataPersonsPerDpto} color={'rgba(240, 91, 121, 0.5)'} label={'Cantidad de personas censadas por departamento'} />
                         </div>
                     </div>
                 </div>
 
                 <div className="col-6">
-                    <div className="card">
+                    <div className="card border-warning">
                         <div class="card-header">Cant. Personas por Ocupación</div>
                         <div className="card-body">
-                            <GraphicsBar options={optionsPersonsByOccupation} data={dataPersonsByOccupations} color={'rgba(200, 200, 99, 0.5)'} label={'Cantidad de personas censadas por ocupación'} />
+                            <GraphicsBar options={optionsPersonsByOccupation} data={dataPersonsByOccupations} color={'rgba(243, 203, 58, 0.5)'} label={'Cantidad de personas censadas por ocupación'} />
                         </div>
                     </div>
                 </div>
                 <div className="col-12">
-                    <div className="card">
+                    <div className="card border-primary">
                         <div className="card-header">Mapa de Uruguay</div>
-                        <div className="card-body">
+                        <div className="card-body mod-padding">
                             <Map data={dataPersonsPerDpto} />
                         </div>
                     </div>
