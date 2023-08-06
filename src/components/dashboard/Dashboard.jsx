@@ -71,7 +71,7 @@ const Dashboard = () => {
                 <AddPerson />
                 <ListPeople />
 
-                <div className="col-2">
+                <div className="col-md-2">
                     <TotalRegistered />
                     <RegisteredPercentage />
                 </div>
