@@ -6,4 +6,4 @@ const Options = ({value,name}) => {
     )
 }
 
-export default Options
+export default Options;

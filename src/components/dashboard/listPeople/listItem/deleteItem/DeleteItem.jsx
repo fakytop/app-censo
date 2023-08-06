@@ -8,9 +8,9 @@ const DeleteItem = (idCenso) => {
     const dispatch = useDispatch();
 
     const deletePersonById = () => {
-        fetch(endpoints.base_url+endpoints.delete_person+idCenso.idCenso, {
-        method:'DELETE',    
-        headers: {
+        fetch(endpoints.base_url + endpoints.delete_person + idCenso.idCenso, {
+            method: 'DELETE',
+            headers: {
                 'Content-Type': 'application/json',
                 'apikey': localStorage.getItem('apiKey'),
                 'iduser': localStorage.getItem('idUsuario')
@@ -23,8 +23,6 @@ const DeleteItem = (idCenso) => {
                     dispatch(deleteRegistered());
                 }
             })
-
-
     }
 
     return (
@@ -32,4 +30,4 @@ const DeleteItem = (idCenso) => {
     )
 }
 
-export default DeleteItem
+export default DeleteItem;

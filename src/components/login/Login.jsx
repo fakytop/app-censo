@@ -62,7 +62,6 @@ const Login = () => {
                 if (rjson.codigo === 200) {
                     localStorage.setItem("idUsuario", rjson.id);
                     localStorage.setItem("apiKey", rjson.apiKey);
-                    console.log(localStorage.getItem("idUsuario"));
 
                     navigate("/dashboard");
                 } else {
@@ -77,11 +76,10 @@ const Login = () => {
         setShowMessageError(true);
         setTimeout(() => {
             setShowMessageError(false);
-            console.log(msjError);
         }, 3000)
     }
     return (
-        <>
+        <form>
             <h1>Iniciar Sesión</h1>
             <div className="form-floating mb-3">
                 <input type="email" ref={username} className="form-control" id="floatingUser" placeholder="name@example.com" onChange={inpUserActive} />
@@ -100,7 +98,7 @@ const Login = () => {
             {showMessageError && (
                 <div class="alert alert-warning" role="alert">{msg}</div>
             )}
-        </>
+        </form>
     )
 }
 

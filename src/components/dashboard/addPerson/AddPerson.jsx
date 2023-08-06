@@ -29,7 +29,8 @@ const AddPerson = () => {
         }, 3000)
     }
 
-    const saveNewPerson = () => {
+    const saveNewPerson = (event) => {
+        event.preventDefault();
         const data = {
             "idUsuario": localStorage.getItem('idUsuario'),
             "nombre": nameSelected.current.value,
@@ -38,7 +39,6 @@ const AddPerson = () => {
             "fechaNacimiento": dateSelected.current.value,
             "ocupacion": parseInt(occupationSelected.current.value)
         }
-        console.log(data);
 
 
         if (data.nombre !== "" && !isNaN(data.departamento) && !isNaN(data.ciudad) && data.fechaNacimiento !== "" && !isNaN(data.ocupacion)) {
@@ -57,6 +57,11 @@ const AddPerson = () => {
                         data.id = rjson.idCenso;
                         dispatch(addNewPerson(data));
                         dispatch(addNewRegistered());
+                        nameSelected.current.value = "";
+                        dpto.current.value = "";
+                        citySelected.current.value = "";
+                        dateSelected.current.value = "";
+                        occupationSelected.current.value = "";
                     } else {
                         showError(rjson.mensaje);
                     }
@@ -86,42 +91,62 @@ const AddPerson = () => {
     }, [idDpto])
 
     return (
-        <form className="card">
-            <h1>Nuevo Censo</h1>
-            <div className="form-floating mb-3">
-                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" ref={nameSelected} />
-                <label htmlFor="floatingInput">Nombre</label>
-            </div>
-            <select className="form-select form-select-lg mb-3" aria-label="Large select example" ref={dpto} onChange={dptoSelected} defaultValue={""}>
-                <option value="" disabled>Seleccione un Departamento</option>
-                {
-                    deptos.map(dpto => <Options value={dpto.id} name={dpto.nombre} />)
-                }
-            </select>
+        <div className="col-md-4">
+            <div className="card" style={{height: '360px'}}>
+                <div className="card-header">Agregar Persona</div>
+                <div className="card-body">
+                    <form id="formularioPersona">
+                        <div className="form-group">
+                            <label htmlFor="nombre">Nombre:</label>
+                            <input type="text" className="form-control" id="nombre" required ref={nameSelected} />
 
-            <select className="form-select form-select-sm" aria-label="Small select example" defaultValue={""} ref={citySelected}>
-                <option value="" disabled>Seleccione una ciudad</option>
-                {
-                    cities.map(city => <Options value={city.id} name={city.nombre} />)
-                }
-            </select>
-            <div className="form-floating">
-                <input type="date" className="form-control" id="floatingPassword" placeholder="Password" ref={dateSelected} />
-                <label htmlFor="floatingPassword">Fecha de Nacimiento</label>
-            </div>
-            <select className="form-select form-select-sm" aria-label="Small select example" defaultValue={""} ref={occupationSelected}>
-                <option value="" disabled>Seleccione una ocupación</option>
-                {
-                    occupations.map(occ => <Options value={occ.id} name={occ.ocupacion} />)
-                }
-            </select>
-            <button type="button" className="btn btn-success form-control" onClick={saveNewPerson}>Guardar</button>
-            {showMessageError && (
-                <div class="alert alert-warning" role="alert">{msg}</div>
-            )}
+                        </div>
 
-        </form>
+                        <div className="row">
+                            <div className="form-group col-md-6">
+                                <label htmlFor="departamento">Departamento:</label>
+                                <select className="form-control" id="departamento" required ref={dpto} onChange={dptoSelected} defaultValue={""}>
+                                    <option value="" disabled>Seleccione un Departamento</option>
+                                    {
+                                        deptos.map(dpto => <Options value={dpto.id} name={dpto.nombre} />)
+                                    }
+                                </select>
+                            </div>
+                            <div className="form-group col-md-6">
+                                <label htmlFor="ciudad">Ciudad:</label>
+                                <select className="form-control" id="ciudad" required defaultValue={""} ref={citySelected}>
+                                    <option value="" disabled>Seleccione una ciudad</option>
+                                    {
+                                        cities.map(city => <Options value={city.id} name={city.nombre} />)
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="fechaNacimiento">Fecha de Nacimiento:</label>
+                            <input type="date" className="form-control" id="fechaNacimiento" required ref={dateSelected} />
+
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="ocupacion">Ocupación:</label>
+                            <select className="form-control" id="ocupacion" required defaultValue={""} ref={occupationSelected}>
+                                <option value="" disabled>Seleccione una ocupación</option>
+                                {
+                                    occupations.map(occ => <Options value={occ.id} name={occ.ocupacion} />)
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" className="btn btn-primary form-control" onClick={saveNewPerson}>Guardar</button>
+                        {showMessageError && (
+                            <div className="alert alert-warning" role="alert">{msg}</div>
+                        )}
+                    </form>
+                </div>
+            </div>
+        </div>
     )
 }
 
 export default AddPerson;
+

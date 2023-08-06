@@ -61,7 +61,6 @@ const Signup = () => {
         setShowMessageError(true);
         setTimeout(() => {
             setShowMessageError(false);
-            console.log(msjError);
         },3000)
     }
     return (

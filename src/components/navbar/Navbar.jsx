@@ -16,13 +16,12 @@ const Navbar = () => {
     const location = useLocation();
 
     useEffect(() => {
-        const showButton = location.pathname !== '/'
-        console.log(location);
+        const showButton = location.pathname !== '/' && location.pathname !== '/signup';
         setEnableButton(showButton ? "block" : "none")
     }, [location])
 
     return (
-        <div className="container">
+        <div className="container mt-5">
             <nav className="row">
                 <div className="col-1">
                     <NavLink to="/">

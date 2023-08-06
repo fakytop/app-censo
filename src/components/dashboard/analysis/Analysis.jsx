@@ -39,7 +39,6 @@ const Analysis = () => {
                 qant: qantByOccupation,
             }
         })
-        console.log(newData);
         setDataPersonsByOccupations(newData);
     }, [people, occupations])
 

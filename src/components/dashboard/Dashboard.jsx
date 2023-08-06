@@ -10,18 +10,8 @@ import { saveAllRegistered } from "../../features/allRegistered";
 import Analysis from "./analysis/Analysis";
 import RegisteredPercentage from "./analysis/registeredPercentage/RegisteredPercentage";
 
-//TODO: Componente Análisis con todas las gráficas
-//TODO: Gráfico de personas x depto. (no se muestran deptos sin datos.)
-//TODO: Gráfico de personas x ocupación.
-//TODO: Mapa con censados x dpto.
-//TODO: % de personas censadas respecto del total.
-//TODO: Tiempo restante en días para finalizar el censo (31/08/2023)
-
-
 const Dashboard = () => {
     const dispatch = useDispatch()
-
-
 
     const fetchData = async () => {
         //Obtengo los departamentos y guardo en slice
@@ -75,17 +65,12 @@ const Dashboard = () => {
 
     fetchData();
 
-
     return (
         <div className="container">
             <div className="row">
+                <AddPerson />
+                <ListPeople />
 
-                <div className="col-4">
-                    <AddPerson />
-                </div>
-                <div className="col-6">
-                    <ListPeople />
-                </div>
                 <div className="col-2">
                     <TotalRegistered />
                     <RegisteredPercentage />
