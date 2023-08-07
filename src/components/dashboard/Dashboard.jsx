@@ -9,9 +9,18 @@ import { saveDptos } from "../../features/deptosSlice";
 import { saveAllRegistered } from "../../features/allRegistered";
 import Analysis from "./analysis/Analysis";
 import RegisteredPercentage from "./analysis/registeredPercentage/RegisteredPercentage";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Dashboard = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        if (localStorage.getItem("apiKey") === null && localStorage.getItem("idUsuario") === null) {
+            navigate('/');
+        }
+    },[navigate])
 
     const fetchData = async () => {
         //Obtengo los departamentos y guardo en slice
