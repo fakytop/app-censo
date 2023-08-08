@@ -108,7 +108,7 @@ const AddPerson = () => {
                                 <select className="form-control" id="departamento" required ref={dpto} onChange={dptoSelected} defaultValue={""}>
                                     <option value="" disabled>Seleccione un Departamento</option>
                                     {
-                                        deptos.map(dpto => <Options value={dpto.id} name={dpto.nombre}/>)
+                                        deptos.map(dpto => <Options key={dpto.id} value={dpto.id} name={dpto.nombre}/>)
                                     }
                                 </select>
                             </div>
@@ -117,7 +117,7 @@ const AddPerson = () => {
                                 <select className="form-control" id="ciudad" required defaultValue={""} ref={citySelected}>
                                     <option value="" disabled>Seleccione una ciudad</option>
                                     {
-                                        cities.map(city => <Options value={city.id} name={city.nombre}/>)
+                                        cities.map(city => <Options key={city.id} value={city.id} name={city.nombre}/>)
                                     }
                                 </select>
                             </div>
@@ -133,7 +133,7 @@ const AddPerson = () => {
                             <select className="form-control" id="ocupacion" required defaultValue={""} ref={occupationSelected}>
                                 <option value="" disabled>Seleccione una ocupación</option>
                                 {
-                                    occupations.map(occ => <Options value={occ.id} name={occ.ocupacion}/>)
+                                    occupations.map(occ => <Options key={occ.id} value={occ.id} name={occ.ocupacion}/>)
                                 }
                             </select>
                         </div>

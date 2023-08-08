@@ -23,7 +23,7 @@ const Navbar = () => {
     }, [location])
 
     return (
-        <div className="container">
+        <div>
             <nav className="row">
                 <div className="col-1">
                     <NavLink to="/">

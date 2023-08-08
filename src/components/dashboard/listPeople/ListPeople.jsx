@@ -10,7 +10,6 @@ const ListPeople = () => {
     const [idOccupation, setIdOccupation] = useState("-1");
     const idOccupationRef = useRef("")
 
-
     const filterOccupation = () => {
         setIdOccupation(idOccupationRef.current.value)
     }
@@ -25,13 +24,13 @@ const ListPeople = () => {
                         <select className="form-control" id="filtroOcupacion" defaultValue={""} ref={idOccupationRef} onChange={filterOccupation}>
                             <option value={"-1"}>Todos</option>
                             {
-                                occupations.map(occ => <Options value={occ.id} name={occ.ocupacion}/>)
+                                occupations.map(occ => <Options key={occ.id} value={occ.id} name={occ.ocupacion}/>)
                             }
                         </select>
                     </div>
                     <ul className="list-group" id="listadoPersonas">
                         {
-                            idOccupation === "-1" ? people.map(p => <ListItem payload={p} />) : people.filter(p => p.ocupacion + "" === idOccupation + "").map(p => <ListItem payload={p} />)
+                            idOccupation === "-1" ? people.map(p => <ListItem key={p.id} payload={p} />) : people.filter(p => p.ocupacion + "" === idOccupation + "").map(p => <ListItem payload={p} />)
                         }
                     </ul>
                 </div>
