@@ -79,7 +79,7 @@ const Login = () => {
         }, 3000)
     }
     return (
-        <form>
+        <form className="container">
             <h1>Iniciar Sesión</h1>
             <div className="form-floating mb-3">
                 <input type="email" ref={username} className="form-control" id="floatingUser" placeholder="name@example.com" onChange={inpUserActive} />

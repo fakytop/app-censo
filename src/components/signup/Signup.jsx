@@ -64,7 +64,7 @@ const Signup = () => {
         },3000)
     }
     return (
-        <>
+        <div className="container">
             <h1>Registrarse</h1>
             <div className="form-floating mb-3">
                 <input type="email" className="form-control" id="floatingUser" placeholder="name@example.com" ref={username} onChange={inpUserActive}/>
@@ -83,7 +83,7 @@ const Signup = () => {
             {showMessageError && (
             <div class="alert alert-warning" role="alert">{msg}</div>
             )}
-        </>
+        </div>
     )
 }
 
