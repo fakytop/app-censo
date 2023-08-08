@@ -30,7 +30,7 @@ const ListPeople = () => {
                     </div>
                     <ul className="list-group" id="listadoPersonas">
                         {
-                            idOccupation === "-1" ? people.map(p => <ListItem key={p.id} payload={p} />) : people.filter(p => p.ocupacion + "" === idOccupation + "").map(p => <ListItem payload={p} />)
+                            idOccupation === "-1" ? people.map(p => <ListItem key={p.id} payload={p} />) : people.filter(p => p.ocupacion + "" === idOccupation + "").map(p => <ListItem key={p.id} payload={p} />)
                         }
                     </ul>
                 </div>
