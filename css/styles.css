@@ -1,0 +1,50 @@
+/* Estilos generales para dark mode  */
+body,
+.card {
+  background-color: #343a40;
+  color: #fff;
+  margin: 1px;
+}
+
+.parrafo {
+  color: #fff;
+  margin: 1px;
+}
+
+/* Estilos para el modo oscuro del botón de guardar */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+Estilos para el modo oscuro de las gráficas .chart-container {
+  background-color: #454d55;
+}
+
+/* ... otros estilos para el modo oscuro ...  */
+input.form-control,
+select.form-control {
+  background-color: #454d55; /* Cambiar por el color que desees */
+}
+
+nav {
+  background-color: #2e2f49;
+  padding: 1.2rem !important;
+}
+
+.header-map {
+  background-color: #6d6fb2;
+}
+
+.mod-padding {
+  padding: 0;
+}
+
+.awesomeIcon :hover {
+  transform: scale(1.05);
+}

@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/app-censo/static/css/main.ff5ab8ff.css",
+    "main.js": "/app-censo/static/js/main.918bae9e.js",
+    "static/js/787.4cfd6998.chunk.js": "/app-censo/static/js/787.4cfd6998.chunk.js",
+    "index.html": "/app-censo/index.html",
+    "main.ff5ab8ff.css.map": "/app-censo/static/css/main.ff5ab8ff.css.map",
+    "main.918bae9e.js.map": "/app-censo/static/js/main.918bae9e.js.map",
+    "787.4cfd6998.chunk.js.map": "/app-censo/static/js/787.4cfd6998.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff5ab8ff.css",
+    "static/js/main.918bae9e.js"
+  ]
+}
